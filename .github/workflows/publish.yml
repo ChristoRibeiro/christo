@@ -16,10 +16,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # No registry-url: it writes a placeholder _authToken that shadows OIDC.
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-          registry-url: https://registry.npmjs.org
 
       # trusted publishing needs npm >= 11.5.1
       - run: npm install -g npm@latest
@@ -27,17 +27,11 @@ jobs:
       - run: npm install --no-audit --no-fund
 
       - name: Publish christoribeiro + christo (new versions only)
+        env:
+          NODE_AUTH_TOKEN: ""   # ensure no token shadows OIDC
         run: |
           set -uo pipefail
           echo "node $(node --version) · npm $(npm --version)"
-
-          # setup-node writes a placeholder _authToken into .npmrc, which npm
-          # uses INSTEAD of OIDC (→ 404). Strip the token (and always-auth) so
-          # npm falls through to OIDC trusted publishing. Keep the registry line.
-          cfg="${NPM_CONFIG_USERCONFIG:-$HOME/.npmrc}"
-          [ -f "$cfg" ] && sed -i '/_authToken/d; /always-auth/d' "$cfg"
-          echo "== npmrc ($cfg) =="; cat "$cfg" 2>/dev/null || echo "(none)"; echo "=="
-
           version=$(node -p "require('./package.json').version")
           fail=0
 
