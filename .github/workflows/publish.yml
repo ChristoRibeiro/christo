@@ -1,0 +1,52 @@
+name: publish to npm
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org
+
+      - run: npm install --no-audit --no-fund
+
+      - name: Publish christo + christoribeiro (new versions only)
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "${NODE_AUTH_TOKEN:-}" ]; then
+            echo "NPM_TOKEN secret not set yet — skipping publish."
+            echo "Add an npm automation token as the NPM_TOKEN secret to enable auto-publish."
+            exit 0
+          fi
+
+          version=$(node -p "require('./package.json').version")
+
+          # publish <npm-name> <bin-to-keep> <bin-to-drop>
+          publish() {
+            name="$1"; keep="$2"; drop="$3"
+            npm pkg set name="$name" "bin.$keep=cli.js" >/dev/null
+            npm pkg delete "bin.$drop" >/dev/null 2>&1 || true
+            remote=$(npm view "$name" version 2>/dev/null || true)
+            if [ "$remote" = "$version" ]; then
+              echo "· $name@$version already on npm — skipping"
+            else
+              echo "· publishing $name@$version"
+              npm publish --access public
+            fi
+          }
+
+          publish christo        christo        christoribeiro
+          publish christoribeiro christoribeiro christo
+
+          echo "done."
