@@ -5,6 +5,11 @@ on:
     branches: [main]
   workflow_dispatch:
 
+# OIDC trusted publishing — no NPM_TOKEN needed, nothing to rotate.
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -13,23 +18,17 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           registry-url: https://registry.npmjs.org
+
+      # trusted publishing needs npm >= 11.5.1
+      - run: npm install -g npm@latest
 
       - run: npm install --no-audit --no-fund
 
       - name: Publish christo + christoribeiro (new versions only)
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           set -euo pipefail
-
-          if [ -z "${NODE_AUTH_TOKEN:-}" ]; then
-            echo "NPM_TOKEN secret not set yet — skipping publish."
-            echo "Add an npm automation token as the NPM_TOKEN secret to enable auto-publish."
-            exit 0
-          fi
-
           version=$(node -p "require('./package.json').version")
 
           # publish <npm-name> <bin-to-keep> <bin-to-drop>

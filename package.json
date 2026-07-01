@@ -25,10 +25,10 @@
   "homepage": "https://christophe.ribeiro.io",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/christoribeiro/christo.git"
+    "url": "git+https://github.com/christoribeiro/christoribeiro.git"
   },
   "bugs": {
-    "url": "https://github.com/christoribeiro/christo/issues"
+    "url": "https://github.com/christoribeiro/christoribeiro/issues"
   },
   "license": "MIT",
   "engines": {
