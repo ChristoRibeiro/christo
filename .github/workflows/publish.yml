@@ -30,6 +30,14 @@ jobs:
         run: |
           set -uo pipefail
           echo "node $(node --version) · npm $(npm --version)"
+
+          # setup-node writes a placeholder _authToken into .npmrc, which npm
+          # uses INSTEAD of OIDC (→ 404). Strip the token (and always-auth) so
+          # npm falls through to OIDC trusted publishing. Keep the registry line.
+          cfg="${NPM_CONFIG_USERCONFIG:-$HOME/.npmrc}"
+          [ -f "$cfg" ] && sed -i '/_authToken/d; /always-auth/d' "$cfg"
+          echo "== npmrc ($cfg) =="; cat "$cfg" 2>/dev/null || echo "(none)"; echo "=="
+
           version=$(node -p "require('./package.json').version")
           fail=0
 
