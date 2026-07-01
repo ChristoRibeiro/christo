@@ -26,12 +26,12 @@ jobs:
 
       - run: npm install --no-audit --no-fund
 
-      - name: Publish christo + christoribeiro (new versions only)
+      - name: Publish christoribeiro + christo (new versions only)
         run: |
-          set -euo pipefail
+          set -uo pipefail
           echo "node $(node --version) · npm $(npm --version)"
-          echo "OIDC request url set: ${ACTIONS_ID_TOKEN_REQUEST_URL:+yes}${ACTIONS_ID_TOKEN_REQUEST_URL:-NO}"
           version=$(node -p "require('./package.json').version")
+          fail=0
 
           # publish <npm-name> <bin-to-keep> <bin-to-drop>
           publish() {
@@ -41,13 +41,18 @@ jobs:
             remote=$(npm view "$name" version 2>/dev/null || true)
             if [ "$remote" = "$version" ]; then
               echo "· $name@$version already on npm — skipping"
+              return
+            fi
+            echo "· publishing $name@$version"
+            if npm publish --access public; then
+              echo "  ✓ $name@$version published"
             else
-              echo "· publishing $name@$version"
-              npm publish --access public
+              echo "  ✗ $name FAILED to publish"
+              fail=1
             fi
           }
 
-          publish christo        christo        christoribeiro
           publish christoribeiro christoribeiro christo
+          publish christo        christo        christoribeiro
 
-          echo "done."
+          exit $fail
