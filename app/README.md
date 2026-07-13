@@ -1,4 +1,4 @@
-# web
+# app
 
 Site personnel de Christophe Ribeiro — Next.js (App Router), déployé sur Vercel.
 
@@ -8,4 +8,4 @@ pnpm dev          # http://localhost:3000
 pnpm build
 ```
 
-Déploiement Vercel : Root Directory = `web`.
+Déploiement Vercel : Root Directory = `app`.
