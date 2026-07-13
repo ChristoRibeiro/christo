@@ -1,13 +1,15 @@
-# christoribeiro
+# Christophe Ribeiro
 
-Repo personnel de Christophe Ribeiro — deux projets indépendants, sans monorepo :
+**Technical founder.** I build and ship products, solo — from the first commit to the thing that goes live.
 
-- [`cli`](./cli) — carte de visite terminal (`npx christo` / `npx christoribeiro`), publiée sur npm.
-- [`app`](./app) — site personnel Next.js, déployé sur Vercel (christoribeiro.com).
+I put small tools on npm along the way, like [`npx christo`](https://www.npmjs.com/package/christo).
 
-Chaque dossier est autonome (son propre `package.json` + `pnpm-lock.yaml`) :
+### Building
 
-```bash
-cd cli && pnpm install && node cli.js      # lance le CLI
-cd app && pnpm install && pnpm dev         # site Next.js — http://localhost:3000
-```
+- [**christo**](./cli) — a terminal calling card · `npx christo`
+- [**christoribeiro.com**](./app) — my site
+- more, soon
+
+### Elsewhere
+
+[Site](https://christophe.ribeiro.io) · [X](https://x.com/christoribeiro) · [LinkedIn](https://linkedin.com/in/christoribeiro) · [christophe@ribeiro.io](mailto:christophe@ribeiro.io)

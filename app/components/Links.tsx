@@ -1,16 +1,21 @@
 import { LINKS } from "@/lib/links";
 
+// The home page IS the site, so drop the self-referential "site" link.
+const shown = LINKS.filter((l) => l.label !== "site");
+
 export function Links() {
   return (
-    <nav aria-label="Liens" className="flex flex-col gap-2">
-      {LINKS.map((link) => (
+    <nav
+      aria-label="Links"
+      className="mt-9 flex flex-wrap gap-x-5 gap-y-2 text-sm text-grey"
+    >
+      {shown.map((link) => (
         <a
           key={link.label}
           href={link.href}
-          className="group flex items-baseline gap-3 font-mono text-muted transition-colors hover:text-star"
+          className="capitalize underline-offset-4 transition-colors hover:text-ink hover:underline"
         >
-          <span className="w-20 text-amber">{link.label}</span>
-          <span className="group-hover:text-sky">{link.value}</span>
+          {link.label}
         </a>
       ))}
     </nav>
