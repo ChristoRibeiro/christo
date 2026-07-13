@@ -14,6 +14,8 @@ FROM node:24-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=3000
+# Next's standalone server otherwise binds to localhost → unreachable in a container.
+ENV HOSTNAME=0.0.0.0
 # Next's standalone output bundles a minimal server + node_modules.
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
