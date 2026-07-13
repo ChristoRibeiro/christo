@@ -6,9 +6,11 @@ Foreach, my consulting studio, funds the work. The rest goes into products of my
 
 ### Building
 
-- [**Foreach**](https://foreach.dev) — B2B consulting studio · live
-- [**Eanscan**](https://eanscan.com) — product data sheets for retailers · live
+<!-- projects:start -->
+- [**Foreach**](https://foreach.dev) — B2B consulting studio
+- [**Eanscan**](https://eanscan.com) — Product data sheets for retailers
 - More, in stealth
+<!-- projects:end -->
 
 ### Elsewhere
 

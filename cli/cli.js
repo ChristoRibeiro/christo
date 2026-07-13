@@ -5,6 +5,10 @@ import React, { useState, useEffect } from "react";
 import { render, Box, Text, useApp, useInput } from "ink";
 import open from "open";
 import cfonts from "cfonts";
+import { readFileSync } from "node:fs";
+
+// Public projects, generated from /data.json by scripts/generate.mjs.
+const ships = JSON.parse(readFileSync(new URL("./projects.json", import.meta.url), "utf8"));
 
 /* ==================================================================== *
  *  EDIT ME — the whole card is built from this object.
@@ -13,7 +17,7 @@ import cfonts from "cfonts";
 const CONFIG = {
   handle: "christo",                                  // the big ASCII wordmark
   name: "Christophe Ribeiro",
-  tagline: "Entrepreneur & Software Engineer",
+  tagline: "Founder & software engineer",
   location: "France",                                 // "" to hide
 
   // Order = order on screen. `key` is the single-press shortcut.
@@ -25,9 +29,8 @@ const CONFIG = {
     { key: "l", label: "linkedin", value: "@christoribeiro",     url: "https://linkedin.com/in/christoribeiro" },
   ],
 
-  // Optional. Add projects to show a "recent ships" block, e.g.:
-  //   { name: "my-project", desc: "what it is", url: "https://…" }
-  ships: [],
+  // Generated from /data.json (public projects). Don't edit here — edit Notion / data.json.
+  ships,
 };
 
 /* ---- palette: dusk over a starry night ---------------------------- */

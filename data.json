@@ -1,0 +1,18 @@
+{
+  "generatedAt": null,
+  "hasStealth": true,
+  "projects": [
+    {
+      "name": "Foreach",
+      "tagline": "B2B consulting studio",
+      "url": "https://foreach.dev",
+      "status": "live"
+    },
+    {
+      "name": "Eanscan",
+      "tagline": "Product data sheets for retailers",
+      "url": "https://eanscan.com",
+      "status": "live"
+    }
+  ]
+}

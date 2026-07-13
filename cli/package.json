@@ -7,7 +7,8 @@
     "christo": "cli.js"
   },
   "files": [
-    "cli.js"
+    "cli.js",
+    "projects.json"
   ],
   "scripts": {
     "start": "node cli.js"

@@ -1,20 +1,17 @@
-import { PROJECTS } from "@/lib/projects";
+import { PROJECTS, HAS_STEALTH } from "@/lib/projects";
 
 export function Portfolio() {
-  const shown = PROJECTS.filter((p) => p.isPublic);
-  const hasStealth = PROJECTS.some((p) => !p.isPublic);
-
   return (
     <section className="mt-9">
       <p className="text-xs font-medium uppercase tracking-widest text-grey">
         Building
       </p>
       <ul className="mt-3 flex flex-col gap-2">
-        {shown.map((p) => (
+        {PROJECTS.map((p) => (
           <li key={p.name} className="text-body">
-            {p.href ? (
+            {p.url ? (
               <a
-                href={p.href}
+                href={p.url}
                 className="font-medium text-ink underline-offset-4 hover:underline"
               >
                 {p.name}
@@ -25,7 +22,7 @@ export function Portfolio() {
             <span className="text-grey"> — {p.tagline}</span>
           </li>
         ))}
-        {hasStealth && <li className="text-grey">More, in stealth.</li>}
+        {HAS_STEALTH && <li className="text-grey">More, in stealth.</li>}
       </ul>
     </section>
   );
