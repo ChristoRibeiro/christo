@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@theme {
+  --color-star: #eef2fb;
+  --color-sky: #8b9dc9;
+  --color-muted: #56678a;
+  --color-amber: #f6b87a;
+  --color-amber-dim: #c98a51;
+  --color-pink: #c86b8e;
+  --color-dusk: #0e1220;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+}
+
+html,
+body {
+  background-color: var(--color-dusk);
+  color: var(--color-star);
+}
