@@ -1,43 +1,10 @@
 {
-  "name": "christo",
-  "version": "1.0.1",
-  "description": "npx christo — a terminal calling card that renders right in your terminal.",
-  "type": "module",
-  "bin": {
-    "christo": "cli.js"
-  },
-  "files": [
-    "cli.js"
-  ],
+  "name": "christoribeiro-monorepo",
+  "private": true,
+  "packageManager": "pnpm@10.33.3",
   "scripts": {
-    "start": "node cli.js"
-  },
-  "keywords": [
-    "npx",
-    "terminal",
-    "tui",
-    "ink",
-    "portfolio",
-    "business-card",
-    "christo"
-  ],
-  "author": "Christophe Ribeiro <christophe@ribeiro.io>",
-  "homepage": "https://christophe.ribeiro.io",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/christoribeiro/christoribeiro.git"
-  },
-  "bugs": {
-    "url": "https://github.com/christoribeiro/christoribeiro/issues"
-  },
-  "license": "MIT",
-  "engines": {
-    "node": ">=18"
-  },
-  "dependencies": {
-    "cfonts": "^3.3.0",
-    "ink": "^5.1.0",
-    "open": "^10.1.0",
-    "react": "^18.3.1"
+    "dev": "pnpm --filter web dev",
+    "build": "pnpm --filter web build",
+    "cli": "pnpm --filter christo start"
   }
 }
