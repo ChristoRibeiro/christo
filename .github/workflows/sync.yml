@@ -20,6 +20,11 @@ on:
 permissions:
   contents: write
 
+# One sync at a time; cancel a run superseded by a newer webhook.
+concurrency:
+  group: sync-portfolio
+  cancel-in-progress: true
+
 jobs:
   sync:
     runs-on: ubuntu-latest
