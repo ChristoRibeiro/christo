@@ -16,8 +16,7 @@ export default function Home() {
         <p>I&apos;m a founder and software engineer building a portfolio of B2B products.</p>
         <p>
           Foreach, my consulting studio, funds the work. The rest goes into
-          products of my own — a few still in stealth — and small tools I ship in
-          the open, like <code className="font-mono text-[0.9em]">npx christo</code>.
+          products of my own — a few still in stealth.
         </p>
       </div>
 
