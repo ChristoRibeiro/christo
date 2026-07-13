@@ -7,6 +7,7 @@ Foreach, my consulting studio, funds the work. The rest goes into products of my
 ### Building
 
 - [**Foreach**](https://foreach.dev) — B2B consulting studio · live
+- [**Eanscan**](https://eanscan.com) — product data sheets for retailers · live
 - More, in stealth
 - [**christo**](./cli) — a terminal calling card · `npx christo`
 - [**christoribeiro.com**](./app) — this site
