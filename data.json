@@ -1,18 +1,19 @@
 {
-  "generatedAt": null,
-  "hasStealth": false,
+  "generatedAt": "2026-07-15T16:19:46.864Z",
+  "hasStealth": true,
   "projects": [
     {
-      "name": "Foreach",
-      "cta": "work with me",
-      "tagline": "B2B consulting",
-      "url": "https://foreach.dev",
+      "name": "Eanscan",
+      "cta": "",
+      "tagline": "Product sheets API",
+      "url": "eanscan.com",
       "status": "live"
     },
     {
-      "name": "Eanscan",
-      "tagline": "Product sheets, automated",
-      "url": "https://eanscan.com",
+      "name": "Foreach",
+      "cta": "",
+      "tagline": "B2B consulting",
+      "url": "foreach.dev",
       "status": "live"
     }
   ]

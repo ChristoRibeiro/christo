@@ -3,18 +3,19 @@ export type Project = { name: string; cta?: string; tagline: string; url?: strin
 
 export const PROJECTS: Project[] = [
   {
-    "name": "Foreach",
-    "cta": "work with me",
-    "tagline": "B2B consulting",
-    "url": "https://foreach.dev",
+    "name": "Eanscan",
+    "cta": "",
+    "tagline": "Product sheets API",
+    "url": "eanscan.com",
     "status": "live"
   },
   {
-    "name": "Eanscan",
-    "tagline": "Product sheets, automated",
-    "url": "https://eanscan.com",
+    "name": "Foreach",
+    "cta": "",
+    "tagline": "B2B consulting",
+    "url": "foreach.dev",
     "status": "live"
   }
 ];
 
-export const HAS_STEALTH = false;
+export const HAS_STEALTH = true;
