@@ -6,6 +6,10 @@ node_modules/
 out/
 *.tsbuildinfo
 
+# internal planning / agent scratch — not for the public repo
+.superpowers/
+docs/
+
 # pnpm-only repo — block stray npm/yarn lockfiles (pnpm-lock.yaml is the committed one)
 package-lock.json
 yarn.lock
