@@ -11,7 +11,7 @@ export const PROJECTS: Project[] = [
   },
   {
     "name": "Foreach",
-    "cta": "",
+    "cta": "work with me",
     "tagline": "B2B consulting",
     "url": "https://foreach.dev",
     "status": "live"

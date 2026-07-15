@@ -1,4 +1,4 @@
-import { PROJECTS, HAS_STEALTH } from "@/lib/projects";
+import { PROJECTS } from "@/lib/projects";
 import { Eyebrow } from "@/components/Eyebrow";
 import { LinkRow } from "@/components/LinkRow";
 
@@ -17,9 +17,6 @@ export function Portfolio() {
           />
         ))}
       </div>
-      {HAS_STEALTH && (
-        <p className="pt-2 text-sm text-grey">More, in stealth.</p>
-      )}
     </section>
   );
 }

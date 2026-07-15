@@ -17,7 +17,14 @@ const hasStealth = Boolean(data.hasStealth);
 
 // Notion's Website field may lack a protocol ("eanscan.com") — make links absolute.
 const httpUrl = (u) => (u && !/^https?:\/\//i.test(u) ? `https://${u}` : u);
-const pub = projects.map((p) => ({ ...p, url: p.url ? httpUrl(p.url) : p.url }));
+// The Notion Portfolio DB has no CTA column, so a sync blanks the CTA — pin
+// business CTAs here (by project name) so they survive syncs.
+const CTA_OVERRIDES = { Foreach: "work with me" };
+const pub = projects.map((p) => ({
+  ...p,
+  url: p.url ? httpUrl(p.url) : p.url,
+  cta: p.cta || CTA_OVERRIDES[p.name] || p.cta,
+}));
 
 // ---- README: replace the managed block ----
 const readmePath = join(root, "README.md");
