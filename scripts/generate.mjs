@@ -15,12 +15,15 @@ const data = JSON.parse(readFileSync(join(root, "data.json"), "utf8"));
 const projects = Array.isArray(data.projects) ? data.projects : [];
 const hasStealth = Boolean(data.hasStealth);
 
+// Notion's Website field may lack a protocol ("eanscan.com") — make links absolute.
+const httpUrl = (u) => (u && !/^https?:\/\//i.test(u) ? `https://${u}` : u);
+const pub = projects.map((p) => ({ ...p, url: p.url ? httpUrl(p.url) : p.url }));
+
 // ---- README: replace the managed block ----
 const readmePath = join(root, "README.md");
-const items = projects.map((p) =>
+const items = pub.map((p) =>
   p.url ? `- [**${p.name}**](${p.url}) — ${p.tagline}` : `- **${p.name}** — ${p.tagline}`
 );
-if (hasStealth) items.push("- More, in stealth");
 const block = `<!-- projects:start -->\n${items.join("\n")}\n<!-- projects:end -->`;
 const readme = readFileSync(readmePath, "utf8");
 const nextReadme = readme.replace(
@@ -36,14 +39,14 @@ writeFileSync(readmePath, nextReadme);
 const ts = `// GENERATED from /data.json by scripts/generate.mjs — do not edit by hand.
 export type Project = { name: string; cta?: string; tagline: string; url?: string; status: string };
 
-export const PROJECTS: Project[] = ${JSON.stringify(projects, null, 2)};
+export const PROJECTS: Project[] = ${JSON.stringify(pub, null, 2)};
 
 export const HAS_STEALTH = ${hasStealth};
 `;
 writeFileSync(join(root, "app/lib/projects.ts"), ts);
 
 // ---- cli: cli/projects.json ("ships") ----
-const ships = projects.map((p) => ({ name: p.name, desc: p.tagline, url: p.url ?? "" }));
+const ships = pub.map((p) => ({ name: p.name, desc: p.tagline, url: p.url ?? "" }));
 writeFileSync(join(root, "cli/projects.json"), JSON.stringify(ships, null, 2) + "\n");
 
 console.log(`generated: ${projects.length} public project(s), hasStealth=${hasStealth}`);

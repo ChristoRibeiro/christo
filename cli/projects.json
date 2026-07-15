@@ -2,11 +2,11 @@
   {
     "name": "Eanscan",
     "desc": "Product sheets API",
-    "url": "eanscan.com"
+    "url": "https://eanscan.com"
   },
   {
     "name": "Foreach",
     "desc": "B2B consulting",
-    "url": "foreach.dev"
+    "url": "https://foreach.dev"
   }
 ]

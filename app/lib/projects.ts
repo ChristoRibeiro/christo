@@ -6,14 +6,14 @@ export const PROJECTS: Project[] = [
     "name": "Eanscan",
     "cta": "",
     "tagline": "Product sheets API",
-    "url": "eanscan.com",
+    "url": "https://eanscan.com",
     "status": "live"
   },
   {
     "name": "Foreach",
     "cta": "",
     "tagline": "B2B consulting",
-    "url": "foreach.dev",
+    "url": "https://foreach.dev",
     "status": "live"
   }
 ];
