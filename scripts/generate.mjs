@@ -3,7 +3,6 @@
 // This regenerates every public surface from it:
 //   - README.md          (between the <!-- projects:start/end --> markers)
 //   - app/lib/projects.ts (the site's Portfolio data)
-//   - cli/projects.json   (the CLI's "ships")
 // Runs offline — no network. Run by hand (`node scripts/generate.mjs`) or by the
 // sync workflow after pull-notion.mjs refreshes data.json.
 import { readFileSync, writeFileSync } from "node:fs";
@@ -51,9 +50,5 @@ export const PROJECTS: Project[] = ${JSON.stringify(pub, null, 2)};
 export const HAS_STEALTH = ${hasStealth};
 `;
 writeFileSync(join(root, "app/lib/projects.ts"), ts);
-
-// ---- cli: cli/projects.json ("ships") ----
-const ships = pub.map((p) => ({ name: p.name, desc: p.tagline, url: p.url ?? "" }));
-writeFileSync(join(root, "cli/projects.json"), JSON.stringify(ships, null, 2) + "\n");
 
 console.log(`generated: ${projects.length} public project(s), hasStealth=${hasStealth}`);
