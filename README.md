@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <a href="https://christoribeiro.com">christoribeiro.com</a>
+  <a href="https://christoribeiro.com">ChristoRibeiro.com</a>
   ·
   <a href="https://x.com/christoribeiro">X</a>
   ·
